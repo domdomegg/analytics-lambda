@@ -1,0 +1,43 @@
+service: analytics-lambda
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'dev'}
+  lambdaHashingVersion: 20201221
+  region: eu-west-1
+  httpApi:
+    cors: true
+  iamRoleStatements:
+  - Effect: "Allow"
+    Action:
+      - "s3:PutObject"
+    Resource:
+      Fn::Join: ['', [Fn::GetAtt: [ Bucket, Arn ], '/*'] ]
+  environment:
+    STAGE: ${self:provider.stage}
+
+functions:
+  analytics:
+    handler: handler.record
+    events:
+    - httpApi:
+        path: /
+        method: post
+
+resources:
+  Resources:
+    Bucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: domdomegg-analytics-lambda-${self:provider.stage}
+        PublicAccessBlockConfiguration:
+          BlockPublicAcls: true
+          BlockPublicPolicy: true
+          IgnorePublicAcls: true
+          RestrictPublicBuckets: true
+        LifecycleConfiguration:
+          Rules:
+            - ExpirationInDays: 90
+              Status: Enabled
