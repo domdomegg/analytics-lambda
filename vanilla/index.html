@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>analytics-lambda/vanilla</title>
+    <script>
+        const endpointUrl = 'https://yourprefix.execute-api.eu-west-1.amazonaws.com/';
+        const project = 'my-project';
+        const streamId = Math.random().toString(36).slice(2);
+        const a = (data) => fetch(endpointUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ project, streamId, data }) });
+        a({ name: 'load' });
+    </script>
+</head>
+<body>
+    <h1>analytics-lambda/vanilla</h1>
+    <button onclick="a({ name: 'button_click' })">Click me!</button>
+</body>
+</html>

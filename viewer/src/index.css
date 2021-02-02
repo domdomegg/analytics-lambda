@@ -1,0 +1,134 @@
+body, button {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: #262640;
+  background: linear-gradient(150deg, #2E2E4D 0%, #1F1F33 100%); 
+  color: white;
+}
+
+#main {
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 60px);
+}
+
+header {
+  line-height: 1;
+  padding: 15px 15px 0 15px;
+  margin: 0;
+}
+
+header h1 {
+  font-size: 30px;
+  display: inline;
+}
+
+header h1 a {
+  color: white;
+  text-decoration: none;
+}
+
+header button {
+  float: right;
+  border: none;
+  color: white;
+  font-size: 16px;
+  padding: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  background: #00916E;
+  border-bottom: 2px solid #00664E;
+}
+
+header button:hover {
+  background: #00B88D;
+  border-bottom-color: #00916E;
+}
+
+header button:active {
+  background: #00664E;
+  border-bottom-color: #003D2F;
+}
+
+.sidebarView {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.sidebarView > div {
+  height: 100%;
+  height: calc(100% - 45px);
+  float: left;
+  overflow: auto;
+}
+
+.sidebarView .left {
+  margin: 15px 0 15px 15px;
+  width: 25%;
+  width: calc(max(300px, 25%) - 60px);
+}
+
+.sidebarView .right {
+  margin: 15px;
+  width: 75%;
+  width: calc(100% - max(300px, 25%) - 45px);
+}
+
+.panel {
+  margin: 15px;
+  padding: 15px;
+  background-color: rgba(23, 23, 38, 0.5);
+}
+
+.panel > *:first-child {
+  margin-top: 0;
+}
+
+.panel > *:last-child {
+  margin-bottom: 0;
+}
+
+.panel .panel {
+  margin: 15px 0 0 0;
+}
+
+ul.select {
+  margin: 0;
+  padding-left: 0;
+  list-style-type: none;
+}
+
+ul.select > li {
+  margin-top: 5px;
+}
+
+ul.select > li > a {
+  display: block;
+  padding: 14px;
+  color: white;
+  text-decoration: none;
+  background: rgba(23, 23, 38, 0.9);
+}
+
+ul.select > li > a.active {
+  background: rgba(58, 58, 99, 0.9);
+}
+
+ul.select > li > a:hover {
+  background: rgba(67, 67, 109, 0.9);
+}
