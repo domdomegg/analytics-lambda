@@ -12,5 +12,5 @@ Super simple serverless analytics. Just send events at it and it'll store them i
 ## 📝 Usage
 
 1. Deploy the contents of `lambda`
-2. Start collecting events in your app, following the code samples in `vanilla` or `react`
+2. Start collecting events in your app, following the code samples in `vanilla` or `tsreact`
 3. View the results in `viewer`
