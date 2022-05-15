@@ -1,20 +1,21 @@
 service: analytics-lambda
-frameworkVersion: '2'
+frameworkVersion: "3"
 
 provider:
   name: aws
   runtime: nodejs12.x
   stage: ${opt:stage, 'dev'}
-  lambdaHashingVersion: 20201221
   region: eu-west-1
   httpApi:
     cors: true
-  iamRoleStatements:
-  - Effect: "Allow"
-    Action:
-      - "s3:PutObject"
-    Resource:
-      Fn::Join: ['', [Fn::GetAtt: [ Bucket, Arn ], '/*'] ]
+  iam:
+    role:
+      statements:
+        - Effect: "Allow"
+          Action:
+            - "s3:PutObject"
+          Resource:
+            Fn::Join: ["", [Fn::GetAtt: [Bucket, Arn], "/*"]]
   environment:
     STAGE: ${self:provider.stage}
 
@@ -22,9 +23,9 @@ functions:
   analytics:
     handler: handler.record
     events:
-    - httpApi:
-        path: /
-        method: post
+      - httpApi:
+          path: /
+          method: post
 
 resources:
   Resources:

@@ -1,0 +1,12 @@
+{
+  "name": "analytics-lambda",
+  "main": "handler.js",
+  "dependencies": {},
+  "devDependencies": {
+    "serverless": "^3.17.0"
+  },
+  "scripts": {
+    "deploy:dev": "serverless deploy --stage dev --verbose",
+    "deploy:prod": "serverless deploy --stage prod --verbose"
+  }
+}

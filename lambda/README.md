@@ -7,13 +7,13 @@ Effectively records whatever you send to the API Gateway endpoint to S3
 ## Setup
 
 ```
-npm install -g serverless
+npm install
 ```
 
 ## Deploy
 
 ```
-serverless deploy -v --stage dev
+npm run deploy:dev
 ```
 
 ## API reference
