@@ -1,6 +1,6 @@
 # 📊 analytics-lambda
 
-Super simple serverless analytics. Just send events at it and it'll store them in an S3 bucket for 90 days.
+Simple serverless analytics. Just send events at it and it'll store them in an S3 bucket for 90 days.
 
 ## 📂 Components
 
