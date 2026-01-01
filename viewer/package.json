@@ -11,7 +11,7 @@
     "@types/react": "^16.14.2",
     "@types/react-dom": "^16.9.10",
     "axios-hooks": "^5.1.1",
-    "express": "^4.21.2",
+    "express": "^4.22.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^7.5.2",
