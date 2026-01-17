@@ -3,7 +3,7 @@
   "main": "handler.js",
   "dependencies": {},
   "devDependencies": {
-    "serverless": "^3.17.0"
+    "serverless": "^4.31.0"
   },
   "scripts": {
     "deploy:dev": "serverless deploy --stage dev --verbose",
