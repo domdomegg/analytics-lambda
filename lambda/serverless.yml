@@ -3,7 +3,7 @@ frameworkVersion: "3"
 
 provider:
   name: aws
-  runtime: nodejs16.x
+  runtime: nodejs24.x
   stage: ${opt:stage, 'dev'}
   region: eu-west-1
   httpApi:
@@ -18,6 +18,11 @@ provider:
             Fn::Join: ["", [Fn::GetAtt: [Bucket, Arn], "/*"]]
   environment:
     STAGE: ${self:provider.stage}
+
+package:
+  patterns:
+    - '!**'
+    - 'handler.js'
 
 functions:
   analytics:
