@@ -3,7 +3,7 @@
   "main": "handler.js",
   "dependencies": {},
   "devDependencies": {
-    "osls": "^3.76.1",
+    "osls": "^4.0.0",
     "vitest": "^4.1.8",
     "@aws-sdk/client-s3": "^3.600.0"
   },
