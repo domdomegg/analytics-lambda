@@ -19,6 +19,11 @@ provider:
   environment:
     STAGE: ${self:provider.stage}
 
+package:
+  patterns:
+    - '!**'
+    - 'handler.js'
+
 functions:
   analytics:
     handler: handler.record
