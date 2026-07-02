@@ -1,7 +1,9 @@
 'use strict';
 
-const AWS = require('aws-sdk')
-const s3 = new AWS.S3({ apiVersion: '2006-03-01' })
+// Uses the AWS SDK v3 bundled into the nodejs18.x+ Lambda runtimes (the
+// previously-used aws-sdk v2 was only bundled up to nodejs16.x)
+const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3')
+const s3 = new S3Client({})
 
 module.exports.record = async (event) => {
   if (!event.body) return makeRes(400, "Missing payload");
@@ -17,12 +19,13 @@ module.exports.record = async (event) => {
   if (!alphaNumRegex.test(body.project)) return makeRes(400, "Invalid project name");
   if (!alphaNumRegex.test(body.streamId)) return makeRes(400, "Invalid streamId name");
 
-  const [err, data] = await new Promise((resolve) => s3.putObject({
-    Body: JSON.stringify(body.data),
-    Bucket: 'domdomegg-analytics-lambda-' + process.env.STAGE,
-    Key: body.project + '/' + body.streamId + '/' + new Date().toISOString().replace(/[-:.T]/g, '_') + '.json',
-  }, (err, data) => resolve([err, data]))); // bit yucky to return the error like this but saves us a try/catch
-  if (err) {
+  try {
+    await s3.send(new PutObjectCommand({
+      Body: JSON.stringify(body.data),
+      Bucket: 'domdomegg-analytics-lambda-' + process.env.STAGE,
+      Key: body.project + '/' + body.streamId + '/' + new Date().toISOString().replace(/[-:.T]/g, '_') + '.json',
+    }));
+  } catch (err) {
     console.error(err);
     return makeRes(503, "Service unavailable");
   }
